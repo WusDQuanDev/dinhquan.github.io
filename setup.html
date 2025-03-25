@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Cài Đặt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-black font-sans">
+    <!-- Improved Navigation Menu -->
+    <nav class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50" id="navMenu">
+        <div class="flex justify-between items-center p-4 border-b">
+            <h2 class="text-xl font-bold">Menu</h2>
+            <button onclick="toggleNav()" class="text-gray-600 hover:text-gray-800">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <ul class="space-y-2 p-4">
+            <li>
+                <a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-200 flex items-center">
+                    <i class="fas fa-globe mr-3"></i>
+                    <span>Web Bán Code</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-200 flex items-center">
+                    <i class="fas fa-comments mr-3"></i>
+                    <span>Diễn Đàn</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-200 flex items-center">
+                    <i class="fas fa-history mr-3"></i>
+                    <span>Lịch Sử</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-200 flex items-center">
+                    <i class="fas fa-user-circle mr-3"></i>
+                    <span>Thông Tin Admin</span>
+                </a>
+            </li>
+            <div class="border-t my-4"></div>
+            <li>
+                <a href="login.html" class="block px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-200 flex items-center">
+                    <i class="fas fa-sign-in-alt mr-3"></i>
+                    <span>Đăng Nhập</span>
+                </a>
+            </li>
+            <li>
+                <a href="register.html" class="block px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-200 flex items-center">
+                    <i class="fas fa-user-plus mr-3"></i>
+                    <span>Đăng Ký</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Top Header -->
+    <div class="flex justify-between items-center p-4 bg-white text-black shadow-lg sticky top-0 z-40">
+        <button onclick="toggleNav()" class="p-2 hover:bg-gray-100 rounded-lg transition duration-200">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+        <div id="authButtons">
+            <a href="login.html" class="bg-black text-white px-4 py-2 rounded-lg mr-2 hover:bg-gray-800">Đăng Nhập</a>
+            <a href="register.html" class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">Đăng Ký</a>
+        </div>
+        <div id="userProfile" class="hidden flex items-center">
+            <span class="mr-4 text-lg">Xin chào, User</span>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700" onclick="logout()">Đăng Xuất</button>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto p-6 mt-4">
+        <h1 class="text-3xl font-bold text-center mb-6">Hướng Dẫn Cài Đặt</h1>
+        
+        <!-- iSH Installation Section -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-mobile-alt mr-3 text-blue-600"></i>
+                Cài đặt trên iSH
+            </h2>
+            <p class="text-gray-700 mb-4">Chạy các lệnh sau để cài đặt:</p>
+            <div class="bg-gray-100 text-black p-4 rounded-lg relative">
+                <pre id="ishCommands" class="whitespace-pre-wrap overflow-x-auto">
+apk update
+apk upgrade
+apk add openssl python3 nodejs npm php
+ln -s /usr/bin/python3 /usr/bin/python
+npm install -g npm@latest
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer</pre>
+                <button onclick="copyToClipboard('ishCommands')" class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-lg text-sm hover:bg-blue-700">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+        
+        <!-- Termux Installation Section -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-terminal mr-3 text-green-600"></i>
+                Cài đặt trên Termux
+            </h2>
+            <p class="text-gray-700 mb-4">Chạy các lệnh sau để cài đặt:</p>
+            <div class="bg-gray-100 text-black p-4 rounded-lg relative">
+                <pre id="termuxCommands" class="whitespace-pre-wrap overflow-x-auto">
+pkg update && pkg upgrade
+pkg install openssl python nodejs npm php
+ln -s /data/data/com.termux/files/usr/bin/python3 /data/data/com.termux/files/usr/bin/python
+npm install -g npm@latest
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar $PREFIX/bin/composer</pre>
+                <button onclick="copyToClipboard('termuxCommands')" class="absolute top-2 right-2 bg-blue-500 text-white p-2 rounded-lg text-sm hover:bg-blue-700">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-black p-4 text-center mt-6">
+        <p>&copy; 2025 NetBreakers Group. All rights reserved.</p>
+        <div class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-gray-600 hover:text-black"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-gray-600 hover:text-black"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-600 hover:text-black"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+    
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Create a temporary toast notification
+                const toast = document.createElement('div');
+                toast.innerText = 'Đã sao chép vào clipboard!';
+                toast.classList.add('fixed', 'bottom-4', 'right-4', 'bg-green-500', 'text-white', 'p-4', 'rounded-lg', 'shadow-lg', 'z-50');
+                document.body.appendChild(toast);
+                
+                // Remove toast after 2 seconds
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 2000);
+            });
+        }
+        
+        function toggleNav() {
+            const navMenu = document.getElementById("navMenu");
+            navMenu.classList.toggle("-translate-x-full");
+        }
+        
+        function logout() {
+            document.getElementById("authButtons").classList.remove("hidden");
+            document.getElementById("userProfile").classList.add("hidden");
+        }
+        
+        // Simulate login state
+        const isLoggedIn = false;
+        if (isLoggedIn) {
+            document.getElementById("authButtons").classList.add("hidden");
+            document.getElementById("userProfile").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
